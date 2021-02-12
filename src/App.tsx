@@ -1,12 +1,24 @@
-import { Home } from 'pages';
+import { Home, NotFound, Shop } from 'pages';
 import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 
 function App() {
 	return (
 		<div>
-			<header>
-				<Home />
-			</header>
+			<Switch>
+				<Route exact path='/'>
+					<Home />
+				</Route>
+				<Route path='/shop'>
+					<Shop />
+				</Route>
+				{/* <Route path='/shop/:id'>
+					<HatsPage />
+				</Route> */}
+				<Route path='*'>
+					<NotFound />
+				</Route>
+			</Switch>
 		</div>
 	);
 }

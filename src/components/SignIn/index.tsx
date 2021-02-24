@@ -1,3 +1,4 @@
+import { FormInput } from 'components';
 import React, { useState } from 'react';
 import './styles/signIn.scss';
 
@@ -8,9 +9,15 @@ const SignIn: React.SFC<SignInProps> = () => {
 		email: '',
 		password: '',
 	});
+
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		setUser({
+			email: '',
+			password: '',
+		});
 	};
+
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
 		setUser({
@@ -18,29 +25,29 @@ const SignIn: React.SFC<SignInProps> = () => {
 			[name]: value,
 		});
 	};
+
 	return (
 		<div className='sign-in'>
 			<h2>I already have an account</h2>
 			<span>Sign in with your email and password</span>
 			<form onSubmit={handleSubmit}>
-				<input
+				<FormInput
 					type='email'
 					name='email'
-					id='email'
+					label='Email'
 					value={user.email}
-					onChange={handleChange}
+					handleChange={handleChange}
 					required
 				/>
-				<label htmlFor='email'>Email</label>
-				<input
+
+				<FormInput
 					type='password'
 					name='password'
-					id='password'
+					label='Password'
 					value={user.password}
-					onChange={handleChange}
+					handleChange={handleChange}
 					required
 				/>
-				<label htmlFor='password'>Password</label>
 
 				<input type='submit' value='Sign In' />
 			</form>

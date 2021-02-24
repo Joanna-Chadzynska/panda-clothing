@@ -6,7 +6,7 @@ export interface HeaderProps {}
 
 const Header: React.SFC<HeaderProps> = () => {
 	return (
-		<div className='header'>
+		<div className='header wrapper'>
 			<Link className='logo-container' to='/'>
 				<Logo className='logo' />
 			</Link>

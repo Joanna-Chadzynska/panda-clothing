@@ -1,4 +1,5 @@
 import { CustomButton, FormInput } from 'components';
+import { signInWithGoogle } from 'firebase/firebase.utils';
 import React, { useState } from 'react';
 import './styles/signIn.scss';
 
@@ -50,6 +51,9 @@ const SignIn: React.SFC<SignInProps> = () => {
 				/>
 
 				<CustomButton type='submit'>Sign In</CustomButton>
+				<CustomButton handleClick={signInWithGoogle}>
+					Sign In With Google
+				</CustomButton>
 			</form>
 		</div>
 	);

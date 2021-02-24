@@ -2,8 +2,8 @@ import React from 'react';
 import './styles/customButton.scss';
 
 export interface CustomButtonProps {
-	type: 'button' | 'submit';
-	handleClick?: () => void;
+	type?: 'button' | 'submit';
+	handleClick?: () => any;
 }
 
 const CustomButton: React.SFC<CustomButtonProps> = ({

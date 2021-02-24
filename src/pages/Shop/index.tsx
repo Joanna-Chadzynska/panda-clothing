@@ -7,7 +7,7 @@ export interface ShopProps {}
 const Shop: React.SFC<ShopProps> = () => {
 	const collections = SHOP_DATA;
 	return (
-		<div className='shop-page'>
+		<div className='shop-page wrapper'>
 			{collections.map((collection) => (
 				<CollectionPreview key={collection.id} {...collection} />
 			))}

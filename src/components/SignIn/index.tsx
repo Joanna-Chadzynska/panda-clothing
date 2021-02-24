@@ -50,10 +50,12 @@ const SignIn: React.SFC<SignInProps> = () => {
 					required
 				/>
 
-				<CustomButton type='submit'>Sign In</CustomButton>
-				<CustomButton handleClick={signInWithGoogle}>
-					Sign In With Google
-				</CustomButton>
+				<div className='buttons'>
+					<CustomButton type='submit'>Sign In</CustomButton>
+					<CustomButton isGoogleSignIn handleClick={signInWithGoogle}>
+						Sign In With Google
+					</CustomButton>
+				</div>
 			</form>
 		</div>
 	);

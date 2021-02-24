@@ -5,7 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 
 function App() {
 	return (
-		<div>
+		<>
 			<Header />
 			<Switch>
 				<Route exact path='/'>
@@ -24,7 +24,7 @@ function App() {
 					<NotFound />
 				</Route>
 			</Switch>
-		</div>
+		</>
 	);
 }
 

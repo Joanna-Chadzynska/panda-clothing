@@ -1,4 +1,4 @@
-import { FormInput } from 'components';
+import { CustomButton, FormInput } from 'components';
 import React, { useState } from 'react';
 import './styles/signIn.scss';
 
@@ -49,7 +49,7 @@ const SignIn: React.SFC<SignInProps> = () => {
 					required
 				/>
 
-				<input type='submit' value='Sign In' />
+				<CustomButton type='submit'>Sign In</CustomButton>
 			</form>
 		</div>
 	);

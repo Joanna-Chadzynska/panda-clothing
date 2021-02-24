@@ -1,9 +1,22 @@
 import { Header } from 'components';
+import { auth } from 'firebase/firebase.utils';
 import { Home, NotFound, Shop, SignInSignUp } from 'pages';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { useUserContext } from './contexts/userContext';
 
-function App() {
+const App = () => {
+	const { setCurrentUser } = useUserContext();
+
+	useEffect(() => {
+		const unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
+			if (setCurrentUser) {
+				setCurrentUser(user);
+			}
+		});
+		return () => unsubscribeFromAuth();
+	}, []);
+
 	return (
 		<>
 			<Header />
@@ -26,6 +39,6 @@ function App() {
 			</Switch>
 		</>
 	);
-}
+};
 
 export default App;

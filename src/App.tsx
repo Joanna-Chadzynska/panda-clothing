@@ -1,21 +1,36 @@
 import { Header } from 'components';
-import { auth } from 'firebase/firebase.utils';
+import { auth, createUserProfileDocument } from 'firebase/firebase.utils';
 import { Home, NotFound, Shop, SignInSignUp } from 'pages';
 import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { useUserContext } from './contexts/userContext';
 
 const App = () => {
-	const { setCurrentUser } = useUserContext();
+	const { setCurrentUser, currentUser } = useUserContext();
 
 	useEffect(() => {
-		const unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
+		const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+			if (userAuth) {
+				const userRef = await createUserProfileDocument(userAuth);
+				userRef?.onSnapshot((snapshot) => {
+					const currUser = {
+						id: snapshot.id,
+						user: snapshot.data(),
+					};
+
+					if (setCurrentUser) {
+						setCurrentUser(currUser);
+					}
+				});
+			}
 			if (setCurrentUser) {
-				setCurrentUser(user);
+				setCurrentUser(null);
 			}
 		});
 		return () => unsubscribeFromAuth();
-	}, []);
+	}, [setCurrentUser]);
+
+	console.log({ currentUser });
 
 	return (
 		<>

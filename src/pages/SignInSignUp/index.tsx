@@ -1,4 +1,4 @@
-import { SignIn } from 'components';
+import { SignIn, SignUp } from 'components';
 import React from 'react';
 import './styles/signInSignUp.scss';
 
@@ -8,6 +8,7 @@ const SignInSignUp: React.SFC<SignInSignUpProps> = () => {
 	return (
 		<div className='sign-in-and-sign-up wrapper'>
 			<SignIn />
+			<SignUp />
 		</div>
 	);
 };

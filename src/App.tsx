@@ -6,7 +6,7 @@ import { Route, Switch } from 'react-router-dom';
 import { useUserContext } from './contexts/userContext';
 
 const App = () => {
-	const { setCurrentUser, currentUser } = useUserContext();
+	const { setCurrentUser } = useUserContext();
 
 	useEffect(() => {
 		const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {

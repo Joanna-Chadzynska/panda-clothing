@@ -8,7 +8,6 @@ export interface HeaderProps {}
 
 const Header: React.SFC<HeaderProps> = () => {
 	const { currentUser } = useUserContext();
-	console.log(currentUser, 'header');
 
 	return (
 		<div className='header wrapper'>

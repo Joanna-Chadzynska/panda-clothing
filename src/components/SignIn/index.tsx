@@ -1,28 +1,35 @@
 import { CustomButton, FormInput } from 'components';
-import { signInWithGoogle } from 'firebase/firebase.utils';
+import { auth, signInWithGoogle } from 'firebase/firebase.utils';
 import React, { useState } from 'react';
 import './styles/signIn.scss';
 
 export interface SignInProps {}
 
 const SignIn: React.SFC<SignInProps> = () => {
-	const [user, setUser] = useState({
+	const [signedUpUser, setSignedUpUser] = useState({
 		email: '',
 		password: '',
 	});
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		setUser({
-			email: '',
-			password: '',
-		});
+		const { email, password } = signedUpUser;
+
+		try {
+			await auth.signInWithEmailAndPassword(email, password);
+			setSignedUpUser({
+				email: '',
+				password: '',
+			});
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
-		setUser({
-			...user,
+		setSignedUpUser({
+			...signedUpUser,
 			[name]: value,
 		});
 	};
@@ -36,7 +43,7 @@ const SignIn: React.SFC<SignInProps> = () => {
 					type='email'
 					name='email'
 					label='Email'
-					value={user.email}
+					value={signedUpUser.email}
 					handleChange={handleChange}
 					required
 				/>
@@ -45,7 +52,7 @@ const SignIn: React.SFC<SignInProps> = () => {
 					type='password'
 					name='password'
 					label='Password'
-					value={user.password}
+					value={signedUpUser.password}
 					handleChange={handleChange}
 					required
 				/>

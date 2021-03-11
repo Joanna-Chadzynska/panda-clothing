@@ -35,5 +35,5 @@ export const { toggleCartHidden, addItem } = cartSlice.actions;
 // };
 
 export const selectCartHidden = (state: RootState) => state.cart.hidden;
-
+export const selectCartItems = (state: RootState) => state.cart.cartItems;
 export default cartSlice.reducer;

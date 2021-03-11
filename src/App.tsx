@@ -2,11 +2,12 @@ import { Header } from 'components';
 import { auth, createUserProfileDocument } from 'firebase/firebase.utils';
 import { Home, NotFound, Shop, SignInSignUp } from 'pages';
 import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
-import { useUserContext } from './contexts/userContext';
+import { setCurrentUser } from 'redux/user/userSlice';
 
 const App = () => {
-	const { setCurrentUser } = useUserContext();
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
@@ -18,17 +19,14 @@ const App = () => {
 						user: snapshot.data(),
 					};
 
-					if (setCurrentUser) {
-						setCurrentUser(currUser);
-					}
+					dispatch(setCurrentUser(currUser));
 				});
 			}
-			if (setCurrentUser) {
-				setCurrentUser(null);
-			}
+			dispatch(setCurrentUser(null));
 		});
 		return () => unsubscribeFromAuth();
-	}, [setCurrentUser]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	return (
 		<>

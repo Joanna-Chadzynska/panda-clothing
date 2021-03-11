@@ -6,6 +6,7 @@ interface AppUser {
 	id: string;
 	user: firebase.firestore.DocumentData | undefined;
 }
+
 interface UserContextProps {
 	currentUser: AppUser | null;
 	setCurrentUser?: React.Dispatch<React.SetStateAction<AppUser | null>>;

@@ -1,13 +1,14 @@
 import { ReactComponent as Logo } from 'assets/logo/crown.svg';
-import { useUserContext } from 'contexts/userContext';
 import { auth } from 'firebase/firebase.utils';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { selectCurrentUser } from 'redux/user/userSlice';
 import './styles/header.scss';
 export interface HeaderProps {}
 
 const Header: React.SFC<HeaderProps> = () => {
-	const { currentUser } = useUserContext();
+	const currentUser = useSelector(selectCurrentUser);
 
 	return (
 		<div className='header wrapper'>

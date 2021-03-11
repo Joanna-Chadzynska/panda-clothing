@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { selectCartHidden } from 'redux/cart/cartSlice';
 import { selectCurrentUser } from 'redux/user/userSlice';
 import './styles/header.scss';
+
 export interface HeaderProps {}
 
 const Header: React.SFC<HeaderProps> = () => {

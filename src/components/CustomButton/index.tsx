@@ -5,6 +5,7 @@ export interface CustomButtonProps {
 	type?: 'button' | 'submit';
 	handleClick?: () => any;
 	isGoogleSignIn?: boolean;
+	inverted?: boolean;
 }
 
 const CustomButton: React.SFC<CustomButtonProps> = ({
@@ -12,13 +13,16 @@ const CustomButton: React.SFC<CustomButtonProps> = ({
 	type = 'button',
 	handleClick,
 	isGoogleSignIn,
+	inverted,
 	...restProps
 }) => {
 	return (
 		<button
 			type={type}
 			onClick={handleClick}
-			className={`${isGoogleSignIn ? 'google-sign-in' : ''} custom-button`}
+			className={`${inverted ? 'inverted' : ''} ${
+				isGoogleSignIn ? 'google-sign-in' : ''
+			} custom-button`}
 			{...restProps}>
 			{children}
 		</button>

@@ -1,8 +1,8 @@
-import { CollectionItem } from 'components/CollectionItem/types';
+import { CartItem } from 'components/CollectionItem/types';
 
 export interface Collection {
 	id: number;
 	title: string;
 	routeName: string;
-	items: CollectionItem[];
+	items: CartItem[];
 }

@@ -1,11 +1,11 @@
 import { CollectionItem } from 'components';
+import { CartItem } from 'components/CollectionItem/types';
 import React from 'react';
-import { CollectionItemProps } from './../CollectionItem/index';
 import './styles/collectionPreview.scss';
 
 export interface CollectionPreviewProps {
 	title: string;
-	items: CollectionItemProps[];
+	items: CartItem[];
 	key: number;
 }
 
@@ -20,7 +20,7 @@ const CollectionPreview: React.SFC<CollectionPreviewProps> = ({
 				{items
 					.filter((item, idx) => idx < 4)
 					.map((item) => (
-						<CollectionItem key={item.id} {...item} />
+						<CollectionItem key={item.id} item={item} />
 					))}
 			</div>
 		</div>

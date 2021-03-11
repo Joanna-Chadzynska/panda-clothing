@@ -1,3 +1,5 @@
+export { default as CartDropdown } from './CartDropdown';
+export { default as CartIcon } from './CartIcon';
 export { default as CollectionItem } from './CollectionItem';
 export { default as CollectionPreview } from './CollectionPreview';
 export { default as CustomButton } from './CustomButton';

@@ -1,15 +1,17 @@
 import { ReactComponent as Logo } from 'assets/logo/crown.svg';
+import { CartDropdown, CartIcon } from 'components';
 import { auth } from 'firebase/firebase.utils';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { selectCartHidden } from 'redux/cart/cartSlice';
 import { selectCurrentUser } from 'redux/user/userSlice';
 import './styles/header.scss';
 export interface HeaderProps {}
 
 const Header: React.SFC<HeaderProps> = () => {
 	const currentUser = useSelector(selectCurrentUser);
-
+	const cartHidden = useSelector(selectCartHidden);
 	return (
 		<div className='header wrapper'>
 			<Link className='logo-container' to='/'>
@@ -27,9 +29,13 @@ const Header: React.SFC<HeaderProps> = () => {
 						SIGN OUT
 					</div>
 				) : (
-					<Link to='/signin'>SIGN IN</Link>
+					<Link className='option' to='/signin'>
+						SIGN IN
+					</Link>
 				)}
+				<CartIcon />
 			</div>
+			{cartHidden ? null : <CartDropdown />}
 		</div>
 	);
 };

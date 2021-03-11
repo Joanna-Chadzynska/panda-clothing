@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from 'app/store';
 import { CartItem } from 'components/CollectionItem/types';
-import { addItemToCart } from './cart.utils';
+import { addItemToCart, removeItemFromCart } from './cart.utils';
 
 interface CartState {
 	hidden: boolean;
@@ -23,10 +23,23 @@ export const cartSlice = createSlice({
 		addItem: (state, action: PayloadAction<CartItem>) => {
 			state.cartItems = addItemToCart(state.cartItems, action.payload);
 		},
+		clearItem: (state, action: PayloadAction<CartItem>) => {
+			state.cartItems = state.cartItems.filter(
+				(item) => item.id !== action.payload.id
+			);
+		},
+		removeItem: (state, action: PayloadAction<CartItem>) => {
+			state.cartItems = removeItemFromCart(state.cartItems, action.payload);
+		},
 	},
 });
 
-export const { toggleCartHidden, addItem } = cartSlice.actions;
+export const {
+	toggleCartHidden,
+	addItem,
+	clearItem,
+	removeItem,
+} = cartSlice.actions;
 
 // export const incrementAsync = (amount: number): AppThunk => (dispatch) => {
 // 	setTimeout(() => {

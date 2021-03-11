@@ -1,6 +1,7 @@
 export { default as CartDropdown } from './CartDropdown';
 export { default as CartIcon } from './CartIcon';
 export { default as CartItem } from './CartItem';
+export { default as CheckoutItem } from './CheckoutItem';
 export { default as CollectionItem } from './CollectionItem';
 export { default as CollectionPreview } from './CollectionPreview';
 export { default as CustomButton } from './CustomButton';

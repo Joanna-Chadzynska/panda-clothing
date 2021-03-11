@@ -38,4 +38,10 @@ export const selectCartHidden = (state: RootState) => state.cart.hidden;
 export const selectCartItems = (state: RootState) => state.cart.cartItems;
 export const selectItemsCount = (state: RootState) =>
 	state.cart.cartItems.reduce((acc, curr) => acc + curr.quantity, 0);
+export const selectCartTotal = (state: RootState) =>
+	state.cart.cartItems.reduce(
+		(acc, curr) => acc + curr.price * curr.quantity,
+		0
+	);
+
 export default cartSlice.reducer;

@@ -1,6 +1,5 @@
 import { store } from 'app/store';
 import 'assets/styles/main.scss';
-import UserProvider from 'contexts/userContext';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -10,11 +9,9 @@ import App from './App';
 ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<UserProvider>
-				<Router>
-					<App />
-				</Router>
-			</UserProvider>
+			<Router>
+				<App />
+			</Router>
 		</Provider>
 	</React.StrictMode>,
 	document.getElementById('root')

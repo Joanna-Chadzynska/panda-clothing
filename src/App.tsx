@@ -1,6 +1,6 @@
 import { Header } from 'components';
 import { auth, createUserProfileDocument } from 'firebase/firebase.utils';
-import { Home, NotFound, Shop, SignInSignUp } from 'pages';
+import { Checkout, Home, NotFound, Shop, SignInSignUp } from 'pages';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
@@ -38,6 +38,9 @@ const App = () => {
 				</Route>
 				<Route path='/shop'>
 					<Shop />
+				</Route>
+				<Route exact path='/checkout'>
+					<Checkout />
 				</Route>
 				<Route
 					exact

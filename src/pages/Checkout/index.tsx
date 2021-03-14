@@ -1,4 +1,4 @@
-import { CheckoutItem } from 'components';
+import { CheckoutItem, StripeButton } from 'components';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectCartItems, selectCartTotal } from './../../redux/cart/cartSlice';
@@ -35,6 +35,12 @@ const CheckoutPage: React.SFC<CheckoutPageProps> = () => {
 			<div className='total'>
 				<span>${total}</span>
 			</div>
+			<div className='test-warning'>
+				*Please use the following test credit cart for payments*
+				<br />
+				4242 4242 4242 4242 - Exp: 03/22 - CVV: 123
+			</div>
+			<StripeButton price={total} />
 		</div>
 	);
 };

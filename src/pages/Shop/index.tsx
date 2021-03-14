@@ -1,17 +1,21 @@
-import { CollectionPreview } from 'components';
+import { CollectionsOverview } from 'components';
+import { Collection } from 'pages';
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { selectCollections } from 'redux/shop/shopSlice';
-
+import { Route } from 'react-router';
+import { useRouteMatch } from 'react-router-dom';
 export interface ShopProps {}
 
 const Shop: React.SFC<ShopProps> = () => {
-	const collections = useSelector(selectCollections);
+	const routeMatch = useRouteMatch();
+
 	return (
 		<div className='shop-page wrapper'>
-			{collections.map((collection) => (
-				<CollectionPreview key={collection.id} {...collection} />
-			))}
+			<Route exact path={`${routeMatch.path}`}>
+				<CollectionsOverview />
+			</Route>
+			<Route exact path={`${routeMatch.path}/:collection`}>
+				<Collection />
+			</Route>
 		</div>
 	);
 };

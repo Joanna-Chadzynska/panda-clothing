@@ -11,5 +11,9 @@
 	.preview {
 		display: flex;
 		justify-content: space-between;
+		gap: 1.5em;
+		.collection-item {
+			width: 22vw;
+		}
 	}
 }

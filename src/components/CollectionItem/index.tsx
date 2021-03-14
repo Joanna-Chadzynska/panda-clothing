@@ -13,6 +13,7 @@ const CollectionItem: React.SFC<CollectionItemProps> = ({ item }) => {
 	const dispatch = useDispatch();
 	const addItemToCart = (item: any) => dispatch(addItem(item));
 	const { imageUrl, name, price } = item;
+
 	return (
 		<div className='collection-item'>
 			<div className='image' style={{ backgroundImage: `url(${imageUrl})` }} />

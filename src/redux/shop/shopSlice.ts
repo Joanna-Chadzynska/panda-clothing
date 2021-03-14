@@ -3,12 +3,14 @@ import { RootState } from '../../app/store';
 import { Collection } from './../../components/CollectionPreview/types';
 
 interface ShopState {
-	collections: Collection[];
+	collections: {
+		[key: string]: Collection;
+	};
 }
 
 const initialState: ShopState = {
-	collections: [
-		{
+	collections: {
+		hats: {
 			id: 1,
 			title: 'Hats',
 			routeName: 'hats',
@@ -78,7 +80,7 @@ const initialState: ShopState = {
 				},
 			],
 		},
-		{
+		sneakers: {
 			id: 2,
 			title: 'Sneakers',
 			routeName: 'sneakers',
@@ -141,7 +143,7 @@ const initialState: ShopState = {
 				},
 			],
 		},
-		{
+		jackets: {
 			id: 3,
 			title: 'Jackets',
 			routeName: 'jackets',
@@ -183,7 +185,7 @@ const initialState: ShopState = {
 				},
 			],
 		},
-		{
+		womens: {
 			id: 4,
 			title: 'Womens',
 			routeName: 'womens',
@@ -239,7 +241,7 @@ const initialState: ShopState = {
 				},
 			],
 		},
-		{
+		mens: {
 			id: 5,
 			title: 'Mens',
 			routeName: 'mens',
@@ -288,7 +290,7 @@ const initialState: ShopState = {
 				},
 			],
 		},
-	],
+	},
 };
 
 export const shopSlice = createSlice({
@@ -302,5 +304,12 @@ export const shopSlice = createSlice({
 export const { setDirectory } = shopSlice.actions;
 
 export const selectCollections = (state: RootState) => state.shop.collections;
+
+export const selectCollection = (collectionUrlParam: any) => (
+	state: RootState
+) => state.shop.collections[collectionUrlParam];
+
+export const selectCollectionForPreview = (state: RootState) =>
+	Object.keys(state.shop.collections).map((key) => state.shop.collections[key]);
 
 export default shopSlice.reducer;

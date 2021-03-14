@@ -1,11 +1,12 @@
 import { CollectionPreview } from 'components';
-import SHOP_DATA from 'data/shop.data';
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectCollections } from 'redux/shop/shopSlice';
 
 export interface ShopProps {}
 
 const Shop: React.SFC<ShopProps> = () => {
-	const collections = SHOP_DATA;
+	const collections = useSelector(selectCollections);
 	return (
 		<div className='shop-page wrapper'>
 			{collections.map((collection) => (

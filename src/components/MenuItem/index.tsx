@@ -8,7 +8,7 @@ export interface MenuItemProps {
 	id: number;
 	linkUrl: string;
 	size?: string;
-	key: number;
+	key?: number;
 }
 
 const MenuItem: React.SFC<MenuItemProps> = ({

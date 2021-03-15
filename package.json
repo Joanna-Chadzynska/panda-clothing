@@ -2,6 +2,7 @@
 	"name": "panda-clothing",
 	"version": "0.1.0",
 	"private": true,
+	"homepage": ".",
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.5.0",
 		"firebase": "^8.3.0",

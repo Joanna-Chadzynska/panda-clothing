@@ -13,6 +13,9 @@ export const firebaseConfig = {
 	measurementId: process.env.REACT_APP_FB_MEASUREMENT_ID,
 };
 
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
 // create user profile document
 export const createUserProfileDocument = async (
 	userAuth: any,
@@ -41,9 +44,6 @@ export const createUserProfileDocument = async (
 	return userRef;
 };
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-
 const auth = firebase.auth();
 const firestore = firebase.firestore();
 
@@ -52,9 +52,5 @@ const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ prompt: 'select_account' });
 firebase.auth().useDeviceLanguage();
 const signInWithGoogle = () => auth.signInWithPopup(provider);
-// .then((result) => {
-// 	let token = result.credential;
-// 	let user = result.user;
-// });
 
 export { auth, firestore, firebase, signInWithGoogle };

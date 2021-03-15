@@ -10,11 +10,11 @@ import App from './App';
 ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<PersistGate loading={null} persistor={persistor}>
-				<Router>
+			<Router>
+				<PersistGate loading={null} persistor={persistor}>
 					<App />
-				</Router>
-			</PersistGate>
+				</PersistGate>
+			</Router>
 		</Provider>
 	</React.StrictMode>,
 	document.getElementById('root')

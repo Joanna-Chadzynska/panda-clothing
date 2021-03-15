@@ -1,6 +1,6 @@
 import { Header } from 'components';
 import { auth, createUserProfileDocument } from 'firebase/firebase.utils';
-import { Checkout, Home, NotFound, Shop, SignInSignUp } from 'pages';
+import { Checkout, Home, Shop, SignInSignUp } from 'pages';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
@@ -30,32 +30,23 @@ const App = () => {
 	}, []);
 
 	return (
-		<>
+		<div>
 			<Header />
 			<Switch>
-				<Route exact path='/'>
-					<Home />
-				</Route>
-				<Route path='/shop'>
-					<Shop />
-				</Route>
-				<Route exact path='/checkout'>
-					<Checkout />
-				</Route>
+				<Route exact path='/' component={Home} />
+				<Route path='/shop' component={Shop} />
+				<Route exact path='/checkout' component={Checkout} />
 				<Route
 					exact
 					path='/signin'
 					render={() => (currentUser ? <Redirect to='/' /> : <SignInSignUp />)}
 				/>
-
-				{/* <Route path='/shop/:id'>
-					<HatsPage />
-				</Route> */}
+				{/* 
 				<Route path='*'>
 					<NotFound />
-				</Route>
+				</Route> */}
 			</Switch>
-		</>
+		</div>
 	);
 };
 

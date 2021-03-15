@@ -43,8 +43,6 @@ export const createUserProfileDocument = async (
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-// Initialize analytics
-firebase.analytics();
 
 const auth = firebase.auth();
 const firestore = firebase.firestore();

@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/customButton.scss';
+import { CustomButtonContainer } from './styles/customButton';
 
 export interface CustomButtonProps {
 	type?: 'button' | 'submit';
@@ -12,20 +12,12 @@ const CustomButton: React.SFC<CustomButtonProps> = ({
 	children,
 	type = 'button',
 	handleClick,
-	isGoogleSignIn,
-	inverted,
 	...restProps
 }) => {
 	return (
-		<button
-			type={type}
-			onClick={handleClick}
-			className={`${inverted ? 'inverted' : ''} ${
-				isGoogleSignIn ? 'google-sign-in' : ''
-			} custom-button`}
-			{...restProps}>
+		<CustomButtonContainer type={type} onClick={handleClick} {...restProps}>
 			{children}
-		</button>
+		</CustomButtonContainer>
 	);
 };
 

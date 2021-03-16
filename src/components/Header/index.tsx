@@ -27,7 +27,9 @@ const Header: React.SFC<HeaderProps> = () => {
 				<Option to='/shop'>SHOP</Option>
 				<Option to='/shop'>CONTACT</Option>
 				{currentUser ? (
-					<OptionButton onClick={() => auth.signOut()}>SIGN OUT</OptionButton>
+					<OptionButton as='div' onClick={() => auth.signOut()}>
+						SIGN OUT
+					</OptionButton>
 				) : (
 					<Option to='/signin'>SIGN IN</Option>
 				)}

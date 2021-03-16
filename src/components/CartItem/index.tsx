@@ -1,6 +1,6 @@
 import React from 'react';
 import { CartItem as ICartItem } from './../CollectionItem/types';
-import './styles/cartItem.scss';
+import { CartItemContainer, ItemDetails, Name } from './styles/cartItem';
 
 export interface CartItemProps {
 	item: ICartItem;
@@ -10,15 +10,15 @@ const CartItem: React.SFC<CartItemProps> = ({
 	item: { imageUrl, price, name, quantity },
 }) => {
 	return (
-		<div className='cart-item'>
+		<CartItemContainer>
 			<img src={imageUrl} alt='item' />
-			<div className='item-details'>
-				<span className='name'>{name}</span>
+			<ItemDetails>
+				<Name>{name}</Name>
 				<span className='price'>
 					{quantity} x ${price}
 				</span>
-			</div>
-		</div>
+			</ItemDetails>
+		</CartItemContainer>
 	);
 };
 

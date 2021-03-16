@@ -1,8 +1,4 @@
-import styled, { css } from 'styled-components/macro';
-
-const spanStyles = css`
-	width: 23%;
-`;
+import styled from 'styled-components/macro';
 
 export const CheckoutPageContainer = styled.div`
 	width: 55%;

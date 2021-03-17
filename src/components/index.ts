@@ -9,6 +9,7 @@ export { default as CustomButton } from './CustomButton';
 export { default as Directory } from './Directory';
 export { default as FormInput } from './FormInput';
 export { default as Header } from './Header';
+export { default as Spinner } from './LoadingIndicator';
 export { default as MenuItem } from './MenuItem';
 export { default as SignIn } from './SignIn';
 export { default as SignUp } from './SignUp';

@@ -47,6 +47,7 @@ export const {
 	updateCollectionsStart,
 } = shopSlice.actions;
 
+// selectors
 export const selectCollections = (state: RootState) => state.shop.collections;
 
 export const selectCollection = (collectionUrlParam: any) => (
@@ -64,6 +65,7 @@ export const selectCollectionForPreview = (state: RootState) =>
 		  )
 		: [];
 
+// async actions
 export const updateCollections = (): AppThunk => async (
 	dispatch: AppDispatch
 ) => {

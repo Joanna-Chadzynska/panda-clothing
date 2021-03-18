@@ -16,6 +16,7 @@ import {
 	REHYDRATE,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import createSagaMiddleware from 'redux-saga';
 import { rootReducer } from 'redux/reducer';
 
 const persistConfig = {
@@ -27,17 +28,27 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export const store = configureStore({
-	reducer: persistedReducer,
-	middleware: getDefaultMiddleware({
+const reduxSagaMonitorOptions = {};
+
+const sagaMiddleware = createSagaMiddleware();
+
+const middlewares = [sagaMiddleware];
+
+const middleware = [
+	...getDefaultMiddleware({
 		serializableCheck: {
-			// Ignore these field paths in all actions
 			ignoredActionPaths: ['payload.user.createdAt'],
-			// Ignore these paths in the state
 			ignoredPaths: ['user.currentUser.user.createdAt'],
 			ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
 		},
+		// thunk: false,
 	}),
+	...middlewares,
+];
+
+export const store = configureStore({
+	reducer: persistedReducer,
+	middleware: middleware,
 });
 
 export let persistor = persistStore(store);
@@ -49,6 +60,5 @@ export type AppThunk<ReturnType = void> = ThunkAction<
 	unknown,
 	Action<string>
 >;
-
 export type AppDispatch = typeof store.dispatch;
 export const useAppDispatch = () => useDispatch<AppDispatch>();
